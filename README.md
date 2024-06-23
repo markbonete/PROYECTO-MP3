@@ -2,10 +2,10 @@
 Este programa reproduce archivos .mp3 desde una tarjeta SD y muestra su información en una pantalla. Permite controlar la reproducción de música mediante tres botones: play, next y previous.
 
 ## Componentes físicos utilizados
-Microcontrolador ESP32
-Tarjeta SD
-Módulo de audio
-Pantalla OLED
+- Microcontrolador ESP32
+- Tarjeta SD
+- Módulo de audio
+- Pantalla OLED
 
 ## Librerías necesarias
 - SD.h: Para el acceso a la tarjeta SD.
