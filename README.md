@@ -16,6 +16,13 @@ Este programa reproduce archivos .mp3 desde una tarjeta SD y muestra su informac
 ## Funcionamiento básico
 El programa busca los archivos MP3 en la carpeta "playlist" en la tarjeta SD al inicio. Los botones físicos conectados al Arduino (play, next y previous) permiten controlar la reproducción de las canciones. Cuando se presiona el botón de reproducción, el programa reproduce la siguiente canción en la lista. Los botones de siguiente y anterior permiten avanzar y retroceder en la lista de reproducción, respectivamente. Se utiliza una pantalla OLED opcional para mostrar información sobre la canción que se está reproduciendo.
 
+## Problemas y limitaciones en el proyecto
+- Limitaciones en las bibliotecas de audio: las bibliotecas que requerimos para la gestión de archivos mp3 no tienen ninguna función pública para gestionar funciones de tiempo. Por tanto, nuestro MP3 no dispone de ninguna función como puede ser la duración de la canción, tiempo recorrido de la canción ni pausar el archivo y reproducirlo en el mismo instante de tiempo.
+- ESP8266: en un principio utilizábamos el botón PREV en el GPIO 0, el problema con esta biblioteca ha sido que al reproducir un archivo con el botón Play, la biblioteca de ESP8266 utiliza el GPIO 0 para funciones especiales de arrancar, desconectando el botón del Pin, entonces dejaba de funcionar completamente. Al cambiar de GPIO funciona correctamente.
+- Programación de los botones: la parte de código que más nos ha dado problemas ha sido la implementación de los botones, debido a que en un principio no estaba bien implementado el esquema por activación por flancos de los botones y los bloqueaba debido a que cambiaba de valor constantemente.
+- Lista de archivos de SD: el objeto File sólo dispone de una función llamada OpenNextFile() que inserta los archivos saltándose el primero que se encuentra en playlist, debiendo implementar un sistema para ordenar los archivos.
+- Soldadura: Por temas de tiempo, no está soldada la placa con los componentes.
+
 ## Explicación del código por partes
 ### Librerías Utilizadas
 - Arduino Core (Arduino.h): La base para la mayoría de los proyectos de Arduino.
